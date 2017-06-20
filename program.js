@@ -15,10 +15,9 @@ server.on('request', function (request, response) {
 			response.end();
 		});
 	} else {
-		response.statusCode = 404;
 		fs.readFile('cat.jpeg', function (err, data) {
-			response.write(data);
-			response.end();
+		 	response.writeHead(404, { 'Content-Type': 'image/jpeg' });
+			response.end(data);
 		});
 	}
 });
